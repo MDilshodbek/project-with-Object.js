@@ -1,14 +1,54 @@
 var user = {
-  name: `Dilshodbek`,
-  surname: `Makhmudov`,
+  name: "Dilshodbek",
+  surname: "Makhmudov",
   age: 25,
-  nationality: `Uzbekistan`,
+  nationality: "Uzbekistan",
 };
 
-function order(update) {
-  if ("create") console.log((user["Current city"] = `South Korea, Daejeon`));
-  else if ("update") console.log((user.age = 26));
-  else if ("delete") console.log(delete user.nationality);
-  else console.log("Error");
+// 1st Method with if
+
+function info(operation) {
+  if (operation.method === "create") {
+    user[operation.key] = operation.value;
+  } else if (operation.method === "update") {
+    user.age = 26;
+  } else if (operation.method === "delete") {
+    delete user["Current city"];
+  }
+  console.log(user);
 }
-order("update");
+
+info({
+  method: "create",
+  key: "Current city",
+  value: "South Korea, Daejeon",
+});
+
+info({
+  method: "update",
+});
+
+info({
+  method: "delete",
+});
+
+// 2nd Method with switch
+
+// function info(edit) {
+//   switch (edit.method) {
+//     case "create":
+//       user[edit.key] = edit.value;
+//     case "update":
+//       user.age = 26;
+//       break;
+//     case "delete":
+//       delete user.nationality;
+//       break;
+//   }
+// }
+
+// info({ method: "create", key: "Nickname", value: "David" });
+// info({ method: "update" });
+// info({ method: "delete" });
+
+// console.log(user);
