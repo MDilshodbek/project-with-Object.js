@@ -11,9 +11,9 @@ function info(operation) {
   if (operation.method === "create") {
     user[operation.key] = operation.value;
   } else if (operation.method === "update") {
-    user.age = 26;
+    user[operation.key] = operation.value;
   } else if (operation.method === "delete") {
-    delete user["Current city"];
+    delete user[operation.key];
   }
   console.log(user);
 }
@@ -26,10 +26,13 @@ info({
 
 info({
   method: "update",
+  key: "age",
+  value: 26,
 });
 
 info({
   method: "delete",
+  key: "Current city",
 });
 
 // 2nd Method with switch
